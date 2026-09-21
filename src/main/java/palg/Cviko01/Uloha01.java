@@ -1,8 +1,8 @@
-package palg;
+package palg.Cviko01;
 
 import java.util.Scanner;
 
-public class Cviko01_Uloha01 {
+public class Uloha01 {
     public static void main(String[] args) {
         while (true) {
             System.out.println("Zadej město:");
