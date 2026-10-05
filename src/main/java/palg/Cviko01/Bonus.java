@@ -13,8 +13,6 @@ public class Bonus
         System.out.println(solution);
     }
 
-
-
     // 1) Varianta pro 3 dvojice
     public static String pcpSolution(
             String upper1, String lower1,
