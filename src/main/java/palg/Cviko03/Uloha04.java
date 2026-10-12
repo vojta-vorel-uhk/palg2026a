@@ -12,6 +12,19 @@ public class Uloha04 {
 
 
         // TODO: Doplň cyklus, který se pokusí v poli najít hledanou hodnotu
+        cyklus1: for(int row = 0; row < matrix.length; row++ ){
+            for(int col = 0; col < matrix[row].length; col++){
+               if(matrix[row][col] == find){
+                   foundInCol = col;
+                   foundInRow = row;
+                   break cyklus1; // Zajímavost: java má break/continue s labelem
+               }
+            }
+            // NEBO if(foundInRow >=0 && foundInCol >=0)
+            //   break;
+        }
+
+
 
 
         if (foundInRow >= 0 && foundInCol >= 0) {
