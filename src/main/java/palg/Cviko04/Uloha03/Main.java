@@ -1,5 +1,10 @@
 package palg.Cviko04.Uloha03;
 
+import palg.Cviko04.Uloha03.Generators.FixedForTestingGenerator;
+import palg.Cviko04.Uloha03.Generators.FromTimestampGenerator;
+import palg.Cviko04.Uloha03.Generators.Generator;
+import palg.Cviko04.Uloha03.Generators.RandomDigitsGenerator;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
@@ -26,39 +31,27 @@ public class Main {
         System.out.println("Systém je nastaven na způsob generování kódů: "+strategy);
 
         Scanner scanner = new Scanner(System.in);
+        var g = newGenerator(strategy);
         while (true) {
             System.out.print("Pro vygenerování 6-místného kódu stiskněte ENTER:");
             scanner.nextLine();
-            System.out.println(newCode(strategy));
+            System.out.println(g.getCode());
         }
     }
 
-    public static String newCode(String strategy){
+    // tzv. "factory metoda"
+    public static Generator newGenerator(String strategy){
         switch (strategy) {
             case "RANDOM_DIGITS":
-                var r = new Random();
-                var s = "";
-                for (int i = 1; i < 6; i++)
-                    s += Integer.toString(r.nextInt(10));
-                return s;
+                return new RandomDigitsGenerator();
             case "FROM_TIMESTAMP":
-                var s1 = Long.toString(Instant.now().toEpochMilli() % 1000000);
-                return s1;
+                return new FromTimestampGenerator();
             case "RANDOM_NUMBER_API":
-                try (HttpClient client = HttpClient.newHttpClient()) {
-                    String responseBody;
-                    HttpRequest request = HttpRequest.newBuilder()
-                            .uri(URI.create("https://www.randomnumberapi.com/api/v1.0/random?min=100000&max=999999&count=1"))
-                            .build();
-                    responseBody = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
-                    return responseBody.replace("[", "").replace("]", "").trim();
-                } catch (Exception e) {
-
-                }
+                return new RandomDigitsGenerator();
             case "FIXED_FOR_TESTING":
-                return  "334455";
+                return new FixedForTestingGenerator();
             default:
-                return "";
+                throw new RuntimeException("CHYBA NASTAVENÍ");
         }
     }
 }
