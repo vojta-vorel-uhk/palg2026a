@@ -24,15 +24,15 @@ public class Utils
     {
         double sum = 0;
         double[] previousCoords = null;
-        for(Location location : routeList)
-        {
-            if(previousCoords != null)
-            {
-                double distance = geoDistance(previousCoords,location.getCoordinates());
-                sum += distance;
-            }
-            previousCoords = location.getCoordinates();
-        }
+//        for(Location location : routeList)
+//        {
+//            if(previousCoords != null)
+//            {
+//                double distance = geoDistance(previousCoords,location.getCoordinates());
+//                sum += distance;
+//            }
+//            previousCoords = location.getCoordinates();
+//        }
         return sum;
     }
 }
