@@ -9,6 +9,16 @@ public class Main {
     // TODO: Uhodni, co metoda měla dělat a uprav ji tak, aby fungovala.
     public static long compute(long input)
     {
+        if(input == 1)
+            return 1;
         return input * compute(input -1);
+    }
+    // NEBO:
+    public static long compute2(long input)
+    {
+        long f= 1;
+        for (int i=1; i <=input; i++)
+            f*=i;
+        return f;
     }
 }

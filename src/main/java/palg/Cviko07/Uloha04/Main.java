@@ -3,7 +3,7 @@ package palg.Cviko07.Uloha04;
 public class Main {
     public static void main(String[] args)
     {
-        printNumbers(5_000_000);
+        printNumbers2(5_000_000);
     }
 
     public static void printNumbers(long start)
@@ -21,6 +21,12 @@ public class Main {
     // TODO: Doplň druhou metodu tak, aby dělala totéž, ale bez rekurze
     public static void printNumbers2(long input)
     {
-
+        while(input > 1){
+            System.out.println(input);
+            if(input % 2 == 0)
+                input = input /2;
+            else
+                input = input*3 +1 ;
+        }
     }
 }
