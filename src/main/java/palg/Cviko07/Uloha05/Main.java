@@ -5,16 +5,29 @@ public class Main {
     {
         long startTime = System.currentTimeMillis();
         System.out.println(fibonacci(42));
+        System.out.println(fibonacci2(42));
         System.out.print("Trvalo to " + (System.currentTimeMillis() - startTime) + " ms");
-
+        System.out.print("COUNT:"+ c);
     }
-
+    static int c;
     // TODO: Zrychli metodu
     public static long fibonacci(long index)
     {
+        c++;
         if(index == 0 || index == 1)
             return 1;
 
         return fibonacci(index - 1) + fibonacci(index - 2);
+    }
+    public static long fibonacci2(long index)
+    {
+        long a = 1;
+        long b = 1;
+        for(int i=0;i<index-1;i++){
+            var oldA = a;
+            a = b;
+            b = oldA + b;
+        }
+        return b;
     }
 }
