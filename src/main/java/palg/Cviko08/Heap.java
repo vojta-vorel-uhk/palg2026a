@@ -20,7 +20,18 @@ public class Heap implements HeapInterface
         count--;
 
         // TODO 7: while cyklem opravit haldu
-
+        var current = 0;
+        while (true){
+            var child = lowerChildIndex(current);
+            if(child == -1) break;
+            if(data[child].compareTo(data[current]) < 0) {
+                swap(current, child);
+                current = child;
+            }
+            else {
+                break;
+            }
+        }
         return result;
     }
 
