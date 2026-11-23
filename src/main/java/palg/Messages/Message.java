@@ -1,7 +1,7 @@
 package palg.Messages;
 import java.time.Instant;
 
-public class Message
+public class Message implements Comparable<Message>
 {
     private final long unixTimestamp;
     private final String text;

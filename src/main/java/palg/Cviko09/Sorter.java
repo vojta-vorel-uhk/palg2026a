@@ -15,6 +15,9 @@ public abstract class Sorter
     private final String dir = System.getProperty("user.dir");
 
     protected static void swap(Message[] m, int a, int b){
+        var temp = m[a];
+        m[a] = m[b];
+        m[b] = temp;
     }
 
     public abstract void sort(Message[] messages);
